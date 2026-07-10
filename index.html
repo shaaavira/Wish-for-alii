@@ -5,31 +5,51 @@
     <title>Kado Spesial Untuk Ali</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
-        body { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; background-color: #f0f4ed; background-image: radial-gradient(#c8e6c9 1px, transparent 1px); background-size: 25px 25px; display: flex; justify-content: center; align-items: center; min-height: 100vh; color: #3e4e3b; }
-        .container { text-align: center; padding: 40px; width: 85%; max-width: 500px; background: #ffffff; border-radius: 25px; box-shadow: 0 15px 35px rgba(100, 120, 90, 0.2); border: 3px solid #a8c69f; position: relative; }
+        body { 
+            margin: 0; padding: 0; font-family: 'Poppins', sans-serif; 
+            background-color: #f0f4ed; 
+            background-image: radial-gradient(#c8e6c9 1px, transparent 1px);
+            background-size: 25px 25px;
+            display: flex; justify-content: center; align-items: center; 
+            min-height: 100vh; color: #3e4e3b;
+        }
+        .container { 
+            text-align: center; padding: 40px; width: 85%; max-width: 500px; 
+            background: #ffffff; border-radius: 25px; 
+            box-shadow: 0 15px 35px rgba(100, 120, 90, 0.2); 
+            border: 3px solid #a8c69f; position: relative;
+        }
         .slide { display: none; animation: fadeIn 0.5s; font-size: 1.3rem; line-height: 1.7; }
         @keyframes fadeIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+        
         h1 { color: #556b2f; font-size: 1.8rem; margin-bottom: 20px; }
+        .text-invitation { font-size: 1.1rem; color: #6b8e23; margin-bottom: 20px; font-weight: 500; }
+        
         .btn-wrapper { display: flex; justify-content: center; gap: 20px; margin-top: 30px; height: 60px; }
         .btn-nav { padding: 12px 30px; background: #6b8e23; color: white; border: none; border-radius: 50px; cursor: pointer; font-size: 1.1rem; font-weight: bold; }
-        #no-btn { background: #d1d8c5; width: 100px; height: 50px; border-radius: 50px; border: none; cursor: pointer; font-weight: bold; font-size: 1.1rem; transition: all 0.1s ease; }
+        
+        #no-btn { 
+            background: #d1d8c5; width: 100px; height: 50px; 
+            border-radius: 50px; border: none; cursor: pointer; font-weight: bold; font-size: 1.1rem; transition: all 0.1s ease;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Ganti 'lagu-ali.mp3' dengan nama file yang kamu upload -->
     <audio id="bgMusic" loop>
         <source src="lagu-ali.mp3" type="audio/mpeg">
     </audio>
 
     <div class="container" id="welcome" style="display: block;">
-        <h1>ALIII ALII, RUNI PUNYA KADOO!</h1>
+        <h1>ALIII ALII!</h1>
+        <p class="text-invitation">Ada sesuatu nih buat kamu. Klik 'Yes' ya buat nonton bareng aku!</p>
         <div class="btn-wrapper">
             <button class="btn-nav" onclick="startExperience()">YES!</button>
             <button id="no-btn" onmouseover="moveNo()">NO</button>
         </div>
     </div>
 
+    <!-- Slides -->
     <div class="container slide" id="slide1"><p>Wkwkw halaman pertama agak maksa yahh, santai lii, <i>it just for fun</i>, kalo gamau nonton gapapa ko, aku sangat paham wkwkw.</p><button class="btn-nav" onclick="nextSlide('slide1', 'slide2')">Next ➡️</button></div>
     <div class="container slide" id="slide2"><p>Oh iya, i have a wish for u: semoga di umur 24 ini kamu bisa berdamai sama riuh di kepala. Semoga kamu menemukan ruang-ruang tenang (ehh puitis bgt wkwkwkw) dan intinya, semoga semua harapan kamu terwujud secara bertahap.</p><button class="btn-nav" onclick="nextSlide('slide2', 'slide3')">Next ➡️</button></div>
     <div class="container slide" id="slide3"><p>Btw, makasih udah berjuang sejauh ini (sejauh ku memandang.....). Oh jangan terlalu diiniin apa sih namanya wkwkw, kalo nanti ada luka masa lalu yang muncul tiba-tiba (kek jin tomang) dan bikin nggak nyaman, please.....jangan lari yawww, mari kita peluk semua luka dan nikmatin prosesnya. Kata Runi yang bijak (narsis dolooo): tiap tahapan hidup itu harus dilaluin, ngga boleh lompat-lompat, nanti pincang loh! Santai aja, sakit sih pasti, tapi di situ letak belajarnya wkwkw (i know u know it).</p><button class="btn-nav" onclick="nextSlide('slide3', 'slide4')">Next ➡️</button></div>
