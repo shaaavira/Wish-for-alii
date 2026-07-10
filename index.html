@@ -31,7 +31,6 @@
             border-radius: 50px; border: none; cursor: pointer; font-weight: bold; font-size: 1.1rem; 
             transition: all 0.2s ease;
         }
-        .final-msg { font-size: 1.6rem; font-weight: bold; color: #556b2f; margin-top: 20px; display: none; }
     </style>
 </head>
 <body>
@@ -44,6 +43,7 @@
         </div>
     </div>
 
+    <!-- Slides -->
     <div class="container slide" id="slide1"><p>Wkwkw halaman pertama agak maksa yahh, santai lii, <i>it just for fun</i>, kalo gamau nonton gapapa ko, aku sangat paham wkwkw.</p><button class="btn-nav" onclick="nextSlide('slide1', 'slide2')">Next ➡️</button></div>
     <div class="container slide" id="slide2"><p>Oh iya, i have a wish for u: semoga di umur 24 ini kamu bisa berdamai sama riuh di kepala. Semoga kamu menemukan ruang-ruang tenang (ehh puitis bgt wkwkwkw) dan intinya, semoga semua harapan kamu terwujud secara bertahap.</p><button class="btn-nav" onclick="nextSlide('slide2', 'slide3')">Next ➡️</button></div>
     <div class="container slide" id="slide3"><p>Btw, makasih udah berjuang sejauh ini (sejauh ku memandang.....). Oh jangan terlalu diiniin apa sih namanya wkwkw, kalo nanti ada luka masa lalu yang muncul tiba-tiba (kek jin tomang) dan bikin nggak nyaman, please.....jangan lari yawww, mari kita peluk semua luka dan nikmatin prosesnya. Kata Runi yang bijak (narsis dolooo): tiap tahapan hidup itu harus dilaluin, ngga boleh lompat-lompat, nanti pincang loh! Santai aja, sakit sih pasti, tapi di situ letak belajarnya wkwkw (i know u know it).</p><button class="btn-nav" onclick="nextSlide('slide3', 'slide4')">Next ➡️</button></div>
@@ -52,7 +52,6 @@
     <div class="container slide" id="slide6">
         <p><i>Lastly, thank God for letting me know u 🤍</i></p>
         <button class="btn-nav" onclick="showFinal()">Selesai Baca ✨</button>
-        <div id="final-text" class="final-msg">Sekali lagi, happy level up day! Jangan lupa makan enak ya hari ini. See u when I see u, Ali!</div>
     </div>
 
     <script>
@@ -64,7 +63,6 @@
 
         function moveNo() {
             const btn = document.getElementById('no-btn');
-            // Random posisi di seluruh layar supaya nggak stuck
             const x = Math.random() * (window.innerWidth - 120);
             const y = Math.random() * (window.innerHeight - 80);
             btn.style.position = 'fixed';
@@ -73,8 +71,10 @@
         }
 
         function showFinal() {
-            document.getElementById('final-text').style.display = 'block';
             confetti({ particleCount: 400, spread: 180, origin: { y: 0.6 } });
+            setTimeout(() => {
+                alert("Sekali lagi, happy level up day! Jangan lupa makan enak ya hari ini. See you when I see you, Ali!");
+            }, 500);
         }
     </script>
 </body>
