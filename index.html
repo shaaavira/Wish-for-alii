@@ -2,80 +2,88 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Kado Spesial untuk Ali</title>
-    <!-- Library Confetti -->
+    <title>Kado Spesial Untuk Ali</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
-        body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background-color: #f0f4ed; display: flex; justify-content: center; align-items: center; min-height: 100vh; color: #4a5d4e; }
-        .container { text-align: center; padding: 30px; width: 90%; max-width: 500px; background: #ffffff; border-radius: 20px; box-shadow: 0 10px 25px rgba(118, 137, 107, 0.2); border: 2px solid #a8c69f; }
-        #section-message { display: none; }
+        body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background-color: #f0f4ed; display: flex; justify-content: center; align-items: center; min-height: 100vh; color: #4a5d4e; overflow: hidden; }
+        .container { text-align: center; padding: 30px; width: 90%; max-width: 500px; background: #ffffff; border-radius: 20px; box-shadow: 0 10px 25px rgba(118, 137, 107, 0.2); border: 2px solid #a8c69f; position: relative; min-height: 200px; }
         
-        /* Animasi Swap Kiri */
-        .slide-left { opacity: 0; transform: translateX(-50px); transition: all 0.8s ease-out; }
-        .active { opacity: 1; transform: translateX(0); }
-
-        h1 { color: #6b8e23; }
-        .btn-group { position: relative; height: 150px; margin-top: 30px; }
-        button { padding: 12px 25px; border: none; border-radius: 30px; cursor: pointer; position: absolute; font-weight: bold; transition: 0.2s; }
-        #yes-btn { background-color: #8fb380; color: white; left: 20%; }
-        #no-btn { background-color: #d1d8c5; color: #4a5d4e; right: 20%; }
+        .slide { display: none; width: 100%; animation: slideIn 0.5s ease-out; }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        
+        .btn-nav { margin-top: 25px; padding: 10px 20px; background: #6b8e23; color: white; border: none; border-radius: 20px; cursor: pointer; font-weight: bold; }
+        
+        /* Tombol No super lincah */
+        #no-btn { position: absolute; background: #d1d8c5; padding: 10px 20px; border-radius: 20px; border: none; cursor: pointer; font-weight: bold; transition: all 0.1s; }
         
         .jamet-btn { margin-top: 20px; background-color: #6b8e23; color: white; padding: 12px 20px; border-radius: 20px; cursor: pointer; display: inline-block; }
-        #preview { margin-top: 20px; max-width: 100%; border-radius: 10px; display: none; }
+        #preview { margin-top: 20px; width: 100%; border-radius: 10px; display: none; }
     </style>
 </head>
 <body>
 
-    <div class="container" id="section-invitation">
+    <div class="container" id="welcome" style="display: block;">
         <h1>ALIII ALII, RUNI PUNYA KADOO!</h1>
-        <p>Mau liat kado spesialnya? Klik 'Yes' buat nonton bareng aku, atau klik 'No' kalau kamu mau aku kejar terus...</p>
-        <div class="btn-group">
-            <button id="yes-btn" onclick="showMsg()">YES!</button>
-            <button id="no-btn">NO</button>
-        </div>
+        <p>Mau liat kado spesialnya?</p>
+        <button class="btn-nav" style="position: relative; margin-right: 50px;" onclick="nextSlide('welcome', 'slide1')">YES!</button>
+        <button id="no-btn" onmouseover="moveNo()">NO</button>
     </div>
 
-    <div class="container" id="section-message">
-        <div class="slide-left"><h1>HAPPY LEVEL UP DAY, ALII! 🎉</h1></div>
-        <p class="slide-left">Wkwkw halaman pertama agak maksa yahh, santai lii, it just for fun...</p>
-        <p class="slide-left">Semoga di umur 24 ini kamu bisa berdamai sama riuh di kepala.</p>
-        <p class="slide-left">Makasih udah berjuang sejauh ini. Jangan lari ya kalau ada luka lama muncul!</p>
-        <p class="slide-left">Kamu ngga harus selalu kuat ko li. Aku tetep di sini besok, dan besoknya lagi.</p>
-        <p class="slide-left">Lastly, thank God for letting me know u 🤍</p>
-        <p class="slide-left">See u when I see u, Ali!</p>
-        
+    <!-- Slide 1 -->
+    <div class="container slide" id="slide1">
+        <p>Wkwkw halaman pertama agak maksa yahh, santai lii, <i>it just for fun</i>, kalo gamau nonton gapapa ko, aku sangat paham wkwkw.</p>
+        <button class="btn-nav" onclick="nextSlide('slide1', 'slide2')">Next ➡️</button>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="container slide" id="slide2">
+        <p>Oh iya, i have a wish for u: semoga di umur 24 ini kamu bisa berdamai sama riuh di kepala. Semoga kamu menemukan ruang-ruang tenang (ehh puitis bgt wkwkwkw) dan intinya, semoga semua harapan kamu terwujud secara bertahap.</p>
+        <button class="btn-nav" onclick="nextSlide('slide2', 'slide3')">Next ➡️</button>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="container slide" id="slide3">
+        <p>Btw, makasih udah berjuang sejauh ini (sejauh ku memandang.....). Oh jangan terlalu diiniin apa sih namanya wkwkw, kalo nanti ada luka masa lalu yang muncul tiba-tiba (kek jin tomang) dan bikin nggak nyaman, please.....jangan lari yawww, mari kita peluk semua luka dan nikmatin prosesnya. Kata Runi yang bijak (narsis dolooo): tiap tahapan hidup itu harus dilaluin, ngga boleh lompat-lompat, nanti pincang loh! Santai aja, sakit sih pasti, tapi di situ letak belajarnya wkwkw (i know u know it).</p>
+        <button class="btn-nav" onclick="nextSlide('slide3', 'slide4')">Next ➡️</button>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="container slide" id="slide4">
+        <p>Emm, apa lagi yah? Coba kasih ide, liiii, jangan cuma baca doang wkwk</p>
+        <button class="btn-nav" onclick="nextSlide('slide4', 'slide5')">Next ➡️</button>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="container slide" id="slide5">
+        <p>Oh ini kawan, kamu ngga harus selalu kuat ko li. Aku tetep di sini besok, besoknya lagi, besoknyaaaaaaa lagi. Jadi, kalo lagi cape, mau nangis, mau jadi manusia semanusia-manusianya (manusia silver juga boleh), kamu bisa cari aku liii. Jangan sungkan to be yourself, okay, bestieee (lha kok alay). Gapapa kamu tetep keren ko, tapi lebih keren aku liii, trust me wkwkw.</p>
+        <p><i>Lastly, thank God for letting me know u 🤍</i></p>
         <label for="file-input" class="jamet-btn">Upload Foto Jamet Kita! 📸</label>
         <input type="file" id="file-input" accept="image/*" onchange="previewImage(event)">
-        <br>
         <img id="preview" alt="Foto Jamet">
     </div>
 
     <script>
-        // Tombol No lari-lari terus
-        const noBtn = document.getElementById('no-btn');
-        noBtn.addEventListener('mouseover', () => {
-            noBtn.style.left = Math.random() * 60 + "%";
-            noBtn.style.top = Math.random() * 50 + "%";
-        });
+        function nextSlide(curr, next) {
+            document.getElementById(curr).style.display = 'none';
+            document.getElementById(next).style.display = 'block';
+            if(next === 'slide1') confetti({ particleCount: 150, spread: 70 });
+        }
 
-        function showMsg() {
-            // Efek Confetti
-            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
-            
-            document.getElementById('section-invitation').style.display = 'none';
-            document.getElementById('section-message').style.display = 'block';
-            
-            // Trigger Animasi Slide
-            document.querySelectorAll('.slide-left').forEach((el, index) => {
-                setTimeout(() => el.classList.add('active'), index * 300);
-            });
+        function moveNo() {
+            const btn = document.getElementById('no-btn');
+            // Menggunakan math random untuk jangkauan yang lebih luas di dalam container
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 100);
+            btn.style.position = 'fixed'; // Biar bisa bebas loncat ke seluruh layar
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
         }
 
         function previewImage(event) {
             const reader = new FileReader();
-            reader.onload = () => {
+            reader.onload = (e) => {
                 const output = document.getElementById('preview');
-                output.src = reader.result;
+                output.src = e.target.result;
                 output.style.display = 'block';
             }
             reader.readAsDataURL(event.target.files[0]);
